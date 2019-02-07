@@ -1,0 +1,51 @@
+<h4>Counter</h4>
+
+<p> Counter ==>  {{counter}} </p>
+
+<!-- {{expr}} interpolation evaluate expression, get result, 
+    convert result to string
+
+    [] = expr property binding
+
+    () - event binding
+-->
+
+<p> Counter + 2   ==> {{counter + 2}} </p>
+
+<input [value]="counter" />
+
+<input [value]="counter + 2" />
+
+<button (click)="increment($event)">
+  +1
+</button>
+
+
+<button (click)="counter = counter - 1">
+  -1
+</button>
+
+<button (click)="incrementBy(2)">
+  +2
+</button>
+
+<button (click)="incrementBy(5)">
+  +5
+</button>
+
+<div (mouseenter)="onMouseEnter()"
+     (mouseleave)="onMouseLeave()"
+>
+  <p>
+    {{ counter % 2 == 0? 'Even': 'Odd' }}
+  </p>
+
+  <button [disabled]="counter % 2 == 0">
+    My Btn
+  </button>
+
+</div>
+
+<button *ngIf="counter % 2 == 0" >
+  Even Number
+</button>
