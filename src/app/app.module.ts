@@ -1,3 +1,4 @@
+import { CartModule } from './cart/cart.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,8 @@ import {FormsModule} from '@angular/forms';
         // module dependencies
         BrowserModule,
         SharedModule,
-        FormsModule
+        FormsModule,
+        CartModule
     ],
 
     declarations: [

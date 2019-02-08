@@ -42,6 +42,29 @@ ng g class shared/models/address
 
 ```
 
+### Day 2
+
+```
+ng g module cart
+
+ng g component cart/components/cart
+
+ng g component cart/components/cart-item
+
+ng g component cart/components/cart-summary
+
+ng g component cart/components/checkout
+
+ng g service cart/services/cart
+
+
+
+ng g class cart/models/order
+ng g class cart/models/cart-item
+
+```
+
+
 # ProductApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
