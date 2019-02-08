@@ -10,6 +10,8 @@ export class ContactComponent implements OnInit {
 
   address: Address = null;
 
+  today = new Date();
+
   constructor() { 
     this.address = new Address();
     this.address.city = 'Blr';

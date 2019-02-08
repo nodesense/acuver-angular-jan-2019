@@ -1,3 +1,20 @@
-<p>
-  cart-item works!
-</p>
+<!-- cart-item.component.html -->
+<div>
+  <article class="card">
+    <header>
+      <h4>{{cartItem.name | uppercase}}</h4>
+    </header>
+      <p>
+        Price: {{cartItem.price | currency:'INR' }}
+      </p>
+      <p>
+        Qty: {{cartItem.quantity}}
+      </p>
+      <p>
+          Total: 
+          {{cartItem.quantity * cartItem.price | currency:'INR'}}
+        </p>
+    <footer>
+    </footer>
+  </article>
+</div>

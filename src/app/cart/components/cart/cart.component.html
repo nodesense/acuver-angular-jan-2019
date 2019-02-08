@@ -1,3 +1,21 @@
-<p>
-  cart works!
-</p>
+<!-- cart.component.html -->
+<h2>Cart</h2>
+
+<button (click)="addItem()">
+  Add Item
+</button>
+
+<button (click)="empty()">
+  Empty
+</button>
+
+<div class="flex three">
+  <app-cart-item *ngFor="let item of  cartItems"
+                  [cartItem]="item"
+  >
+  </app-cart-item>
+</div>
+
+
+<app-cart-summary>
+</app-cart-summary>

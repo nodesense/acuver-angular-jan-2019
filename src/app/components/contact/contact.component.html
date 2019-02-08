@@ -20,3 +20,15 @@
 
 <app-address [address]="address">
 </app-address>
+
+
+<p>Date {{today}}</p>
+
+<p>Date | date  {{today | date}}</p>
+
+
+<p>Date | custom  {{today | date:'dd-MM-yyyy, hh:mm'}}</p>
+
+<pre>
+    {{address | json}}
+</pre>
