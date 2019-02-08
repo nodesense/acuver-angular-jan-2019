@@ -1,4 +1,7 @@
 <div>
   <h2>{{title}}</h2>
+
+  <span>Amount {{ (amount$ | async) | currency }} </span>
+  <span>Total Items {{totalItems$ | async}}  </span>
   <hr />
 </div>

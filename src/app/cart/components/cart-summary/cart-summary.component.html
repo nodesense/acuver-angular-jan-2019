@@ -5,11 +5,20 @@
 <table>
   <tr>
     <td>Amount</td>
-    <td>{{amount}}</td>
+    <td>{{myAmount}}</td>
   </tr>
 
   <tr>
+      <td>Amount</td>
+      <td>{{amount$ | async }}</td>
+    </tr>
+  
+
+  <tr>
     <td> Total Items</td>
-    <td>{{totalItems}}</td>
+    <!-- async subcribe for the update automatically 
+        unsubcribe when component destroyed
+    -->
+    <td>{{totalItems$ | async}}</td>
   </tr>
 </table>

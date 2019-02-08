@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../models/cart-item';
 
+import {Subject} from 'rxjs';
+
 // share data with components
 // retain data when component destroyed
 // implementing api calls
@@ -13,23 +15,54 @@ import { CartItem } from '../models/cart-item';
 })
 export class CartService {
   cartItems: CartItem[] = [];
-  amount = 0;
-  totalItems = 0;
+  private _amount = 0;
+  private _totalItems = 0;
+
+  // observable of number
+  amount$: Subject<number> = new Subject();
+  totalItems$: Subject<number> = new Subject();
 
   constructor() {
     console.log('CartService created');
    }
 
+   // getter
+   get amount() {
+     return this._amount;
+   }
+
+   set amount(value: number) {
+     this._amount = value;
+     // Publish the values using rxjs
+     // next publish the value
+     this.amount$.next(this._amount);
+   }
+
+   get totalItems() {
+     return this._totalItems;
+   }
+
+   set totalItems(value: number) {
+     this._totalItems = value;
+     this.totalItems$.next(this._totalItems);
+   }
+
    calculate() {
-     this.amount = 0;
-     this.totalItems = 0;
+     let amount = 0;
+     let totalItems = 0;
 
      for (const item of this.cartItems) {
-       this.amount += item.price * item.quantity;
-       this.totalItems += item.quantity;
+       amount += item.price * item.quantity;
+       totalItems += item.quantity;
      }
 
-     console.log('calculate ', this.amount, this.totalItems);
+     console.log('calculate ', amount, totalItems);
+
+     // setter amount
+     this.amount = amount;
+
+     // setter totalItems
+     this.totalItems = totalItems;
    }
 
    addItem(item: CartItem) {
