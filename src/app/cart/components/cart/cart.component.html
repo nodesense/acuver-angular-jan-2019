@@ -9,9 +9,13 @@
   Empty
 </button>
 
+<!-- parent subscribe for child component event -->
 <div class="flex three">
   <app-cart-item *ngFor="let item of  cartItems"
                   [cartItem]="item"
+                  (removeItem)="onRemoveItem($event)"
+                  (updateQuantity)="onUpdateQuantity($event)"
+
   >
   </app-cart-item>
 </div>

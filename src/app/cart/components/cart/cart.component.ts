@@ -32,4 +32,12 @@ export class CartComponent implements OnInit {
     this.cartService.empty();
   }
 
+  onUpdateQuantity(data: any) {
+    this.cartService.updateQuantity(data.id, data.qty);
+  }
+
+  onRemoveItem(id: number) {
+    this.cartService.removeItem(id);
+  }
+
 }

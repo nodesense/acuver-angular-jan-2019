@@ -15,6 +15,15 @@
           {{cartItem.quantity * cartItem.price | currency:'INR'}}
         </p>
     <footer>
+      <button (click)="remove()">
+        X
+      </button>
+      <button (click)="incr()">
+          +1
+        </button>
+        <button (click)="decr()">
+            -1
+          </button>
     </footer>
   </article>
 </div>
