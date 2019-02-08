@@ -1,4 +1,20 @@
+# Clone the repo
+
+```
+
+git clone https://github.com/nodesense/acuver-angular-jan-2019
+
+cd acuver-angular-jan-2019
+
+npm install
+
+ng serve
+
+```
+
 # Get Started
+
+
 
 ng new product-app
 
