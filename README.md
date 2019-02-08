@@ -34,6 +34,9 @@ ng g component components/about
 
 ng g component components/contact
 
+ng g component components/not-found
+
+
 ng g module shared
 
 ng g component shared/components/address
@@ -61,6 +64,33 @@ ng g service cart/services/cart
 
 ng g class cart/models/order
 ng g class cart/models/cart-item
+
+```
+
+
+Product Module 
+
+```
+
+ng g module product
+
+ng g component product/components/product-home
+
+ng g component product/components/product-list
+
+ng g component product/components/product-edit
+
+ng g component product/components/product-search
+
+ng g service product/services/product
+
+ng g class product/models/product
+
+
+ng g pipe shared/pipes/power
+
+ng g pipe shared/pipes/sort
+
 
 ```
 

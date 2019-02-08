@@ -1,0 +1,46 @@
+<h2>Product List</h2>
+
+<form>
+  Select Field
+
+  <select name="sortField" 
+          [(ngModel)]="sortField">
+     <option value="name">Name</option>   
+     <option value="price">Price</option>   
+     <option value="year">Year</option>   
+  </select>
+
+  Select Order
+
+  <select name="sortOrder" 
+          [(ngModel)]="sortOrder">
+     <option value="asc">Asc</option>   
+     <option value="desc">Desc</option> 
+  </select>
+</form>
+
+<p>Sorting  {{sortField}} by {{sortOrder}} </p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Year</th>
+    <th>+Cart</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr *ngFor="let product of (products | sort:sortField:sortOrder)">
+    <td>
+      <a [routerLink]="['/', 'products', 'edit', product.id]">
+      {{product.name}}
+    </a>
+    </td>
+    <td>{{product.price}}</td>
+    <td>{{product.year}}</td>
+    <td> <button (click)="addToCart(product)" >+Cart</button></td>
+    <td> <button (click)="deleteProduct(product.id)" >
+           X
+         </button></td>
+  </tr>
+</table>

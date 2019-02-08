@@ -1,3 +1,4 @@
+import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,31 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CounterComponent } from './components/counter/counter.component';
 
 import {FormsModule} from '@angular/forms';
+import {RouterModule,
+        Routes} from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+import {HttpClientModule} from '@angular/common/http';
+
+
+const routes: Routes = [
+    {
+        path: '',
+        component: HomeComponent
+    },
+    {
+        path: 'about',
+        component: AboutComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
+    },
+    {
+        path: '**',
+        component: NotFoundComponent
+    }
+];
 
 @NgModule({
     imports: [
@@ -18,7 +44,10 @@ import {FormsModule} from '@angular/forms';
         BrowserModule,
         SharedModule,
         FormsModule,
-        CartModule
+        CartModule,
+        RouterModule.forRoot(routes),
+        ProductModule,
+        HttpClientModule
     ],
 
     declarations: [
@@ -30,6 +59,7 @@ import {FormsModule} from '@angular/forms';
         AboutComponent,
         ContactComponent,
         CounterComponent,
+        NotFoundComponent,
         // Home, About, etc
     ],
 

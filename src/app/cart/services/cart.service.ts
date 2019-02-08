@@ -2,7 +2,8 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../models/cart-item';
 
-import {Subject} from 'rxjs';
+import {Subject,
+       BehaviorSubject} from 'rxjs';
 
 // share data with components
 // retain data when component destroyed
@@ -19,8 +20,8 @@ export class CartService {
   private _totalItems = 0;
 
   // observable of number
-  amount$: Subject<number> = new Subject();
-  totalItems$: Subject<number> = new Subject();
+  amount$: BehaviorSubject<number> = new BehaviorSubject(this._amount);
+  totalItems$: BehaviorSubject<number> = new BehaviorSubject(this._totalItems);
 
   constructor() {
     console.log('CartService created');
