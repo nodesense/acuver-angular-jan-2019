@@ -1,3 +1,25 @@
+# Get Started
+
+ng new product-app
+
+cd product-app
+
+ng serve
+
+ng g component components/header
+ng g component components/footer
+ng g component components/home
+ng g component components/counter
+ng g component components/about
+ng g component components/contact
+
+ng g module shared
+
+ng g component shared/components/address
+
+ng g class shared/models/address
+
+
 # ProductApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.

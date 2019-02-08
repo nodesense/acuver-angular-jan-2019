@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,10 +9,14 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CounterComponent } from './components/counter/counter.component';
 
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
     imports: [
         // module dependencies
-        BrowserModule
+        BrowserModule,
+        SharedModule,
+        FormsModule
     ],
 
     declarations: [

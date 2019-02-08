@@ -1,3 +1,4 @@
+import { Address } from './../../shared/models/address';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  address: Address = null;
+
+  constructor() { 
+    this.address = new Address();
+    this.address.city = 'Blr';
+    this.address.state = 'KA';
+    this.address.pincode = 560000;
+  }
 
   ngOnInit() {
   }

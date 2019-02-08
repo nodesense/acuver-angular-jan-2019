@@ -1,3 +1,22 @@
-<p>
-  contact works!
-</p>
+<h2>Contact page</h2>
+
+<!-- [()] = two way binding -->
+
+<form>
+    State <input name="state" 
+                 [(ngModel)]="address.state" />
+
+    City <select name="city"
+                 [(ngModel)]="address.city" >
+            <option value="Blr">Bangalore</option>    
+            <option value="Mys">Mysore</option>
+        </select>
+</form>
+
+
+<!-- null/undefined check, ?. elvis operator-->
+
+<p> State {{address?.state}}</p>
+
+<app-address [address]="address">
+</app-address>

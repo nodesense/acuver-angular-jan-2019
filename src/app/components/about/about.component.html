@@ -1,3 +1,36 @@
-<p>
-  about works!
+<h2>About Page</h2>
+
+<h4>Members</h4>
+
+<!-- # template reference variable 
+
+  #inputName refers to input dom element
+-->
+<input name="member" #inputName />
+
+<p #greeting>
+  Greeting!!
 </p>
+
+
+<p #greeting2>
+  Greeting 2!!
+</p>
+
+<button (click)="greeting.textContent = 'hello'" >
+  Hello
+</button>  
+
+<button (click)="addMember(  inputName.value );inputName.value = '' ">
+  Add
+</button>
+
+<button (click)="empty()">
+  Empty
+</button>
+
+<ul>
+  <li  *ngFor="let memberName of members;let i = index;">
+     {{i}} {{memberName}}
+  </li>
+</ul>
