@@ -1,4 +1,8 @@
-<h2 appHighlight>Home Page</h2>
+<h2 appHighlight markerColor='lightyellow'
+                 highlightColor='lightgreen'
+
+                 (highlighterOn)="onHighlight($event)"
+>Home Page</h2>
 
 <button (click)="toggle()">
     Show/Hide

@@ -18,4 +18,8 @@ export class HomeComponent implements OnInit {
     this.show = !this.show;
   }
 
+  onHighlight(status: boolean) {
+    console.log('directive event highlight is ', status);
+  }
+
 }

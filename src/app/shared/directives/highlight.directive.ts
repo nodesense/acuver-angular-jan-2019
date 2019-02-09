@@ -5,7 +5,8 @@ import { Directive,
          ElementRef,
          Input,
          Output,
-         Renderer2
+         Renderer2,
+         EventEmitter
 } from '@angular/core';
 
 // Directives are applied as attribute
@@ -27,6 +28,10 @@ export class HighlightDirective implements OnInit {
   @Input()
   markerColor: string;
 
+
+  @Output()
+  highlighterOn: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private hostElement: ElementRef,
               private renderer: Renderer2) { }
 
@@ -47,16 +52,18 @@ export class HighlightDirective implements OnInit {
                            color);
   }
 
-  @HostListener('mouseenter')
-  onEnter() {
-    console.log('directive mouse enter');
+  @HostListener('mouseenter', ['$event'])
+  onEnter(event: Event) {
+    console.log('directive mouse enter', event);
     this.setBgColor(this.highlightColor);
+    this.highlighterOn.emit(true);
   }
 
   @HostListener('mouseleave')
   onLeave() {
     console.log('directive mouse leave');
     this.setBgColor(this.markerColor);
+    this.highlighterOn.emit(false);
   }
 
 }
