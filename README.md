@@ -94,6 +94,12 @@ ng g pipe shared/pipes/sort
 
 ```
 
+## DAY 3
+
+ ng g class product/models/brand
+
+ 
+
 
 # ProductApp
 

@@ -1,3 +1,5 @@
+import { ProductService } from './../../services/product.service';
+import { Product } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
 
 // read data from url :productId
@@ -5,6 +7,8 @@ import {ActivatedRoute} from '@angular/router';
 
 // programatically visit one page from another one
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import { Brand } from '../../models/brand';
 
 @Component({
   selector: 'app-product-edit',
@@ -12,9 +16,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+  product: Product = new Product();
+  brands$: Observable<Brand[]>;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private productService: ProductService) { }
 
 
   gotoList() {
@@ -24,6 +31,17 @@ export class ProductEditComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.params['productId'];
     console.log('id is ', id);
+
+    this.brands$ = this.productService.getBrands();
+
+    if (id) { // id present, edit the data
+      this.productService
+          .getProduct(id)
+          .subscribe(product => {
+            this.product = product;
+          });
+    }
+
   }
 
   save() {

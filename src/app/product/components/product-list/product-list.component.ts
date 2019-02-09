@@ -3,7 +3,6 @@ import { CartItem } from './../../../cart/models/cart-item';
 import { Product } from './../../models/product';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
 import { Subscription } from 'rxjs';
 
 @Component({
