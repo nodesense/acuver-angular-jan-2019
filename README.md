@@ -111,6 +111,22 @@ ng g service auth/services/interceptor
 ng g guard auth/guards/auth
 
 
+## Production Bundle
+
+ng build --prod 
+
+
+## run production app as demo server
+
+npm install http-server -g
+
+http-server -c-1 -p 8888
+
+
+to run the development server with aot,
+
+ng serve --aot
+
 
 
 # ProductApp

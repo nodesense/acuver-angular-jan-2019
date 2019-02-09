@@ -47,7 +47,7 @@ export class AuthService {
 
     this.http.post(`${environment.authEndPoint}`, data)
              .subscribe( (result: LoginResponse) => {
-               console.log('Result ', result);
+               console.log('Result', result);
                // TODO: set local storage
 
                localStorage.setItem('token', result.token);
