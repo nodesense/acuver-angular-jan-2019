@@ -19,6 +19,8 @@ export class ProductEditComponent implements OnInit {
   product: Product = new Product();
   brands$: Observable<Brand[]>;
 
+  message: string;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private productService: ProductService) { }
@@ -45,7 +47,15 @@ export class ProductEditComponent implements OnInit {
   }
 
   save() {
-    this.gotoList();
+    this.message = 'saving product ....';
+     this.productService
+          .saveProduct(this.product)
+          .subscribe ( product => {
+            console.log('product saved ', product);
+            this.product = product;
+            this.message = 'product saved successfully';
+            this.gotoList();
+          });
   }
 
 }
