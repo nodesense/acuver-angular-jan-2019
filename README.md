@@ -98,7 +98,8 @@ ng g pipe shared/pipes/sort
 
  ng g class product/models/brand
 
- 
+ ng g directive shared/directives/highlight
+
 
 
 # ProductApp
