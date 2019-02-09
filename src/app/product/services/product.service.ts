@@ -1,13 +1,17 @@
 import { Brand } from './../models/brand';
 // product.service.ts
 import { Injectable } from '@angular/core';
+
 import { environment } 
         from 'src/environments/environment';
 
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
-        
+         
+
+console.log("ENV ", environment);
+
 @Injectable({
   providedIn: 'root'
 })
