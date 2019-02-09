@@ -2,34 +2,43 @@ import { CartService } from './../../../cart/services/cart.service';
 import { CartItem } from './../../../cart/models/cart-item';
 import { Product } from './../../models/product';
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ThrowStmt } from '@angular/compiler';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   sortField: string;
   sortOrder: string;
 
+  // good to use async pipe
   products: Product[];
+
+  subscription: Subscription;
 
   constructor(private productService: ProductService,
               private cartService: CartService) { }
 
   fetchProducts() {
-    this.productService
-        .getProducts()
-        .subscribe ( products => {
-          this.products = products;
-        });
+    this.subscription = this.productService
+                        .getProducts()
+                        .subscribe ( products => {
+                          this.products = products;
+                        });
   }
 
   ngOnInit() {
     this.fetchProducts();
+  }
+
+  ngOnDestroy() {
+    console.log('product list destroy');
+    this.subscription.unsubscribe();
   }
 
   addToCart(product: Product) {
