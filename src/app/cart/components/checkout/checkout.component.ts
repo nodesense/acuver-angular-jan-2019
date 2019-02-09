@@ -4,9 +4,27 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,
         FormControl,
         Validators,
-        FormBuilder
+        FormBuilder,
+        AbstractControl,
+        ValidationErrors
       } from '@angular/forms';
 import { Order } from '../../models/order';
+
+import {map, 
+        filter} from 'rxjs/operators';
+
+function countryValidator(control: AbstractControl): ValidationErrors | null {
+  console.log('countryValidator', control.value);
+  const country = control.value;
+  if (country == 'IN' || country == 'USA') {
+    return null; // no error
+  }
+
+  // error in country
+  return {
+    'country': false
+  };
+}
 
 @Component({
   selector: 'app-checkout',
@@ -39,6 +57,7 @@ export class CheckoutComponent implements OnInit {
                                   ]);
     this.countryControl = new FormControl(this.order.country, [
                                     Validators.required,
+                                    countryValidator
                                   ]);
 
     this.formGroup = this.builder.group({
@@ -51,9 +70,32 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.nameControl
         .valueChanges
+        .pipe(map (value => value.trim()))
+        .pipe(filter( value => !!value)) // check empty string
+        .pipe (filter ( value => this.nameControl.valid))
         .subscribe (value => {
           console.log('name ', value);
           this.order.name = value;
+        });
+
+        this.emailControl
+        .valueChanges
+        .pipe(map (value => value.trim()))
+        .pipe(filter( value => !!value)) // check empty string
+        .pipe (filter ( value => this.emailControl.valid))
+        .subscribe (value => {
+          console.log('email ', value);
+          this.order.email = value;
+        });
+
+        this.countryControl
+        .valueChanges
+        .pipe(map (value => value.trim()))
+        .pipe(filter( value => !!value)) // check empty string
+        .pipe (filter ( value => this.countryControl.valid))
+        .subscribe (value => {
+          console.log('country ', value);
+          this.order.country = value;
         });
   }
 

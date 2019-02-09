@@ -8,6 +8,10 @@
   Name 
   <input formControlName="name" />
 
+  <p *ngIf="nameControl.invalid">
+    Name is invalid
+  </p>
+
   Email
   <input formControlName="email" />
 
