@@ -1,4 +1,5 @@
-import { ProductModule } from './product/product.module';
+import { AuthModule } from './auth/auth.module';
+// import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,12 @@ const routes: Routes = [
         component: ContactComponent
     },
     {
+        // lazy loading modules
+        // creates a separate bundle
+        path: 'products',
+        loadChildren: './product/product.module#ProductModule'
+    },
+    {
         path: '**',
         component: NotFoundComponent
     }
@@ -46,8 +53,9 @@ const routes: Routes = [
         FormsModule,
         CartModule,
         RouterModule.forRoot(routes),
-        ProductModule,
-        HttpClientModule
+       // ProductModule,
+        HttpClientModule,
+        AuthModule
     ],
 
     declarations: [

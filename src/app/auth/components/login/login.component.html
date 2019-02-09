@@ -1,0 +1,20 @@
+<!-- login.component.html -->
+<h2>Login</h2>
+
+<form (ngSubmit)="login()">
+  Username 
+  <input name="username"
+                  [(ngModel)]="username" />
+
+  Password 
+  <input name="password"
+                  [(ngModel)]="password" />
+
+    <button type="submit"> Login </button>
+</form>
+
+<li>admin: admin</li>
+
+<li>staff: staff</li>
+
+<li>user: user</li>

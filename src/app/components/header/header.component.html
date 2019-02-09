@@ -41,9 +41,15 @@
 
   <a routerLink="/login" class="button"
       routerLinkActive='success'
+      *ngIf="!(authenticated$ | async)" 
   >
     Login
   </a>
+
+  <button  *ngIf="(authenticated$ | async)" 
+           (click)="logout()">
+    Logout
+  </button>
 
 
   <span>Amount {{ (amount$ | async) | currency:'INR' }} </span>

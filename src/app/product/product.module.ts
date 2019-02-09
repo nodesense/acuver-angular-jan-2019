@@ -11,7 +11,8 @@ import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
-    path: 'products',
+    //path: 'products',
+    path: '', // for lazy load
     component: ProductHomeComponent,
     children: [ // nested navigation
        {

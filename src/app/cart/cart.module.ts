@@ -1,3 +1,4 @@
+import { AuthGuard } from './../auth/guards/auth.guard';
 // cart.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    component: CheckoutComponent
+    component: CheckoutComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

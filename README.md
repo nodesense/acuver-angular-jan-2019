@@ -100,6 +100,17 @@ ng g pipe shared/pipes/sort
 
  ng g directive shared/directives/highlight
 
+ng g module auth
+
+ng g component auth/components/login
+
+ng g service auth/services/auth
+
+ng g service auth/services/interceptor
+
+ng g guard auth/guards/auth
+
+
 
 
 # ProductApp
