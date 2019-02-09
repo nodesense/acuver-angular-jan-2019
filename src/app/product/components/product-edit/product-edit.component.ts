@@ -1,6 +1,6 @@
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../models/product';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 // read data from url :productId
 import {ActivatedRoute} from '@angular/router';
@@ -9,6 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { Brand } from '../../models/brand';
+
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-product-edit',
@@ -20,6 +22,9 @@ export class ProductEditComponent implements OnInit {
   brands$: Observable<Brand[]>;
 
   message: string;
+
+  @ViewChild('productForm')
+  form: NgForm;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -47,6 +52,12 @@ export class ProductEditComponent implements OnInit {
   }
 
   save() {
+
+    if (this.form.pristine) {
+      alert('No data changes');
+      return;
+    }
+
     this.message = 'saving product ....';
      this.productService
           .saveProduct(this.product)

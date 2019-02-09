@@ -1,11 +1,59 @@
-<h2>Product Edit</h2>
+<h2>Product Edit - {{product.name}}</h2>
 
 <span> {{message}} </span>
 
-<form (ngSubmit)="save()" >
+<!--
+  <input #productName /> points to dom element
+
+  <input [(ngModel)]....  
+      #productName='ngModel' > productName points to  
+                            ngModel directive object
+
+
+-->
+
+<p *ngIf="productForm.dirty">
+  Form changed
+</p>
+
+<p *ngIf="productForm.invalid">
+  Invalid form data
+</p>
+
+<form (ngSubmit)="save()"
+      #productForm="ngForm"
+>
   Name
   <input name="name"
-         [(ngModel)]="product.name" />
+         [(ngModel)]="product.name"
+         
+         required
+         minlength="3"
+
+         #productName="ngModel"
+
+         />
+
+  <p *ngIf="productName.invalid">
+    Name field is invalid
+  </p>
+
+  <p *ngIf="productName.dirty">
+    Name is changed
+  </p>
+
+  <pre>
+    {{productName.errors | json }}
+  </pre>
+
+
+  <p *ngIf="productName.errors?.required">
+    Name is required
+  </p>
+
+  <p *ngIf="productName.errors?.minlength">
+    Name should be 3 letters
+  </p>
 
   Price
   <input name="price"
@@ -26,6 +74,8 @@
     </option>    
   </select>
 
-  <button type="submit"> Save </button>
+  <button type="submit"
+          [disabled]="productForm.invalid"
+  > Save </button>
 
 </form>
